@@ -13,9 +13,7 @@ days_ago = datetime.now() - timedelta(days=7)
 # buckets for PRs closed during {interval}
 time_intervals = [1, 2, 5, 10, 20, 50, 100, 1000]  # 1 hour, 2 hours, 5 hours
 # prometheus metric to count PRs in each {interval}
-pull_request_duration_count = Counter('pull_request_duration_count',
-                                      'Count of Pull Requests within a time interval',
-                                      labelnames=['repo_name', 'time_interval'])
+pull_request_duration_count = Counter('pull_request_duration_count','Count of Pull Requests within a time interval','labelnames=['repo_name','time_interval'])
 
 def calculate_pull_request_duration(repository, pr):
     created_at = pr.created_at
