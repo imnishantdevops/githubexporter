@@ -9,7 +9,7 @@ from github import Github
 import os
 
 github_token = os.environ.get("GITHUB_TOKEN")
-github_token = "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"
+github_token = "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"
 
 # to get PRs closed during last N days
 days_ago = datetime.now() - timedelta(days=7)
@@ -56,7 +56,7 @@ def main():
             print(f"Skipping repository: {repository_name}")
 
     # Start Prometheus HTTP server
-    start_http_server(8000)
+    start_http_server(8002)
     print("HTTP server started")
     while True:
         time.sleep(15)
