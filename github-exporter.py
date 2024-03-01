@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 from datetime import datetime, timedelta
 import time
@@ -6,7 +6,7 @@ from prometheus_client import start_http_server, Counter
 from github import Github
 
 # TODO: move to env vars
-github_token = "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"
+github_token = "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"
 
 # to get PRs closed during last N days
 days_ago = datetime.now() - timedelta(days=7)
@@ -32,13 +32,13 @@ def calculate_pull_request_duration(repository, pr):
                 break
 
 def main():
-    # connect to Gihub
+    # connect to Github
     github_instance = Github(github_token)
-    organization_name = 'OrgNameg'
-    # read org
-    organization = github_instance.get_organization(organization_name)
-    # get repos list 
-    repositories = organization.get_repos()
+    # specify your personal GitHub username
+    github_username = 'imnishantdevops'
+
+    # get repos list
+    repositories = github_instance.get_user(github_username).get_repos()
 
     for repository in repositories:
         # to set in labels
@@ -58,6 +58,5 @@ def main():
     while True:
         time.sleep(15)
         pass
-
 if __name__ == '__main__':
     main()
