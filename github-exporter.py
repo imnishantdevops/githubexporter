@@ -6,6 +6,9 @@ from prometheus_client import start_http_server, Counter
 from github import Github
 
 # TODO: move to env vars
+import os
+
+github_token = os.environ.get("GITHUB_TOKEN")
 github_token = "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"
 
 # to get PRs closed during last N days
